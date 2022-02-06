@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+
+  roach1:
+    container_name: roach1
+    hostname: roach1
+    image: cockroachdb/cockroach:latest
+    command: start --store=node1 --insecure --advertise-addr=roach1:26257 --join=roach1:26257,roach2:26257,roach3:26257
+    ports:
+      - "26257:26257"
+      - "8080:8080"
+
+  roach2:
+    container_name: roach2
+    hostname: roach2
+    image: cockroachdb/cockroach:latest
+    command: start --store=node2 --insecure --advertise-addr=roach2:26257 --join=roach1:26257,roach2:26257,roach3:26257
+    ports:
+      - "26258:26257"
+      - "8081:8080"
+
+  roach3:
+    container_name: roach3
+    hostname: roach3
+    image: cockroachdb/cockroach:latest
+    command: start --store=node3 --insecure --advertise-addr=roach3:26257 --join=roach1:26257,roach2:26257,roach3:26257
+    ports:
+      - "26259:26257"
+      - "8082:8080"
+
+  # roach-init:
+  #   container_name: roach-init
+  #   hostname: roach-init
+  #   image: cockroachdb/cockroach:latest
+  #   command: init --insecure --host=roach1:26257
+  #   depends_on:
+  #     - roach1
+  #     - roach2
+  #     - roach3
+  

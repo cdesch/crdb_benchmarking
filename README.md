@@ -12,13 +12,15 @@ Init Cluster
 
     docker run --network=crdb_benchmarking_default -it cockroachdb/cockroach:latest init --insecure --host=roach1:26257
 
-Run benchmark
+Import Data
     
     docker run --network=crdb_benchmarking_default -it cockroachdb/cockroach:latest workload fixtures import tpcc --warehouses=2500 'postgres://root@roach1:26257?sslmode=disable'
 
+Run benchmark
+
     export addrs="postgres://root@roach1:26257?sslmode=disable postgres://root@roach2:26257?sslmode=disable postgres://root@roach3:26257?sslmode=disable"
     echo $addrs
-    cockroach workload run tpcc --warehouses=2500 --ramp=1m --duration=30m '$(echo $addrs)'
+    docker run --network=crdb_benchmarking_default -it cockroachdb/cockroach:latest workload run tpcc --warehouses=2500 --ramp=1m --duration=5m '$(echo $addrs)'
 
 View CRDB Dashboard
 

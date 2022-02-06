@@ -4,14 +4,19 @@ Benchmark CockroachDB
 
 ## Run
 
+Start Cluster
+
     docker-compose -f docker-compose-crdb.yaml up
+
+Init Cluster
+
     docker run --network=crdb_benchmarking_default -it cockroachdb/cockroach:latest init --insecure --host=roach1:26257
 
-    docker run --network=crdb_benchmarking_default -it cockroachdb/cockroach:latest cockroach workload fixtures import tpcc --warehouses=2500 'postgres://root@roach1:26257?sslmode=disable'
+Run benchmark
     
     docker run --network=crdb_benchmarking_default -it cockroachdb/cockroach:latest workload fixtures import tpcc --warehouses=2500 'postgres://root@roach1:26257?sslmode=disable'
 
-Dashboard
+View CRDB Dashboard
 
     http://localhost:8080
 

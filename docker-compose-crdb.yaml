@@ -1,7 +1,6 @@
 version: "3.9"
 
 services:
-
   roach1:
     container_name: crdb_roach1
     hostname: roach1
@@ -10,6 +9,14 @@ services:
     ports:
       - "26257:26257"
       - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: '3.0'
+          memory: 6G
+        reservations:
+          cpus: '1.5'
+          memory: 2G
 
   roach2:
     container_name: crdb_roach2
@@ -19,7 +26,15 @@ services:
     ports:
       - "26258:26257"
       - "8081:8080"
-
+    deploy:
+      resources:
+        limits:
+          cpus: '3.0'
+          memory: 6G
+        reservations:
+          cpus: '1.5'
+          memory: 2G
+          
   roach3:
     container_name: crdb_roach3
     hostname: roach3
@@ -28,7 +43,15 @@ services:
     ports:
       - "26259:26257"
       - "8082:8080"
-
+    deploy:
+      resources:
+        limits:
+          cpus: '3.0'
+          memory: 6G
+        reservations:
+          cpus: '1.5'
+          memory: 2G
+          
   # roach-init:
   #   container_name: roach-init
   #   hostname: roach-init

@@ -1,0 +1,8 @@
+https://www.maxon.net/en/downloads/cinebench-r23-downloads
+
+Audit check 9.2.2.5.6: SKIP: not enough order status transactions to be statistically significant  
+Audit check 9.2.2.5.3: SKIP: insufficient data for remote warehouse distribution check
+Audit check 9.2.2.5.4: SKIP: insufficient data for remote warehouse distribution check
+
+_elapsed_______tpmC____efc__avg(ms)__p50(ms)__p90(ms)__p95(ms)__p99(ms)_pMax(ms)
+  300.0s     6361.4  98.9%    109.5     67.1    209.7    352.3    805.3   1811.

@@ -1,0 +1,36 @@
+SysBench
+
+
+https://github.com/akopytov/sysbench/blob/master/README.md#general-command-line-options
+https://www.alibabacloud.com/blog/testing-io-performance-with-sysbench_594709
+
+sysbench cpu run
+
+sysbench fileio --file-total-size=15G --file-test-mode=rndrw --time=300 --max-requests=0 prepare
+sysbench fileio --file-total-size=15G --file-test-mode=rndrw --time=300 --max-requests=0 run
+sysbench fileio --file-total-size=15G --file-test-mode=rndrw --time=300 --max-requests=0 cleanup
+
+
+File operations:
+    reads/s:                      1221.13
+    writes/s:                     814.09
+    fsyncs/s:                     2605.46
+
+Throughput:
+    read, MiB/s:                  19.08
+    written, MiB/s:               12.72
+
+General statistics:
+    total time:                          300.0157s
+    total number of events:              1392151
+
+Latency (ms):
+         min:                                    0.06
+         avg:                                    0.21
+         max:                                   15.38
+         95th percentile:                        0.68
+         sum:                               299235.40
+
+Threads fairness:
+    events (avg/stddev):           1392151.0000/0.00
+    execution time (avg/stddev):   299.2354/0.00
